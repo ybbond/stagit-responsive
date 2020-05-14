@@ -524,12 +524,13 @@ printshowfile(FILE *fp, struct commitinfo *ci)
 		fwrite(&linestr[add], 1, del, fp);
 		fputs("</span></td></tr>\n", fp);
 	}
-	fprintf(fp, "</table></pre><pre>%zu file%s changed, %zu insertion%s(+), %zu deletion%s(-)\n",
-		ci->filecount, ci->filecount == 1 ? "" : "s",
+	fprintf(fp, "</table></pre></div><p>%zu file%s changed, %zu insertion%s(<span id=\"plus\">+</span>)"
+		", %zu deletion%s(<span id=\"min\">-</span>)</p>\n",
+					ci->filecount, ci->filecount == 1 ? "" : "s",
 	        ci->addcount,  ci->addcount  == 1 ? "" : "s",
 	        ci->delcount,  ci->delcount  == 1 ? "" : "s");
 
-	fputs("<hr/>", fp);
+	fputs("<div id=\"pre-scroll\">\n<pre>\n", fp);
 
 	for (i = 0; i < ci->ndeltas; i++) {
 		patch = ci->deltas[i]->patch;
@@ -658,9 +659,9 @@ writelog(FILE *fp, const git_oid *oid)
 			relpath = "../";
 			fpfile = efopen(path, "w");
 			writeheader(fpfile, ci->summary);
-			fputs("<pre>", fpfile);
+			fputs("<div id=\"pre-scroll\">\n<pre>", fpfile);
 			printshowfile(fpfile, ci);
-			fputs("</pre>\n", fpfile);
+			fputs("</pre>\n</div>\n", fpfile);
 			writefooter(fpfile);
 			fclose(fpfile);
 		}

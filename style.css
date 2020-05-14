@@ -21,7 +21,7 @@ a {
   color: #8DBFFF;
 }
 
-a:hover {
+min, a:hover {
   color: #F9690E;
 }
 
@@ -53,7 +53,7 @@ table td {
 	padding: 0 0.4em;
 }
 
-#blob, div#table-scroll {
+#blob, div#table-scroll, div#pre-scroll {
   overflow: scroll;
   padding-bottom: 3em;
 }
@@ -101,12 +101,14 @@ pre a.h {
 }
 
 .A,
+#plus,
 span.i,
 pre a.i {
 	color: #79D688;
 }
 
 .D,
+#min,
 span.d,
 pre a.d {
 	color: #F9690E;
