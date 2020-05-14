@@ -1,0 +1,4 @@
+stagit
+stagit-index
+*.o
+.DS_Store

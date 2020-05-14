@@ -5,6 +5,8 @@ static git page generator.
 
 It generates static HTML pages for a git repository.
 
+This is a fork of codemadness' stagit http://git.codemadness.org/stagit/
+
 
 Usage
 -----
