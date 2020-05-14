@@ -65,6 +65,7 @@ writeheader(FILE *fp)
 {
 	fputs("<!DOCTYPE html>\n"
 		"<html>\n<head>\n"
+    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
 		"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n"
 		"<title>", fp);
 	xmlencode(fp, description, strlen(description));
@@ -76,7 +77,7 @@ writeheader(FILE *fp)
 	xmlencode(fp, description, strlen(description));
 	fputs("</span></td></tr><tr><td></td><td>\n"
 		"</td></tr>\n</table>\n<hr/>\n<div id=\"content\">\n"
-		"<table id=\"index\"><thead>\n"
+		"<div id=\"table-scroll\"><table id=\"index\"><thead>\n"
 		"<tr><td><b>Name</b></td><td><b>Description</b></td><td><b>Owner</b></td>"
 		"<td><b>Last commit</b></td></tr>"
 		"</thead><tbody>\n", fp);
@@ -85,7 +86,7 @@ writeheader(FILE *fp)
 void
 writefooter(FILE *fp)
 {
-	fputs("</tbody>\n</table>\n</div>\n</body>\n</html>\n", fp);
+	fputs("</tbody>\n</table>\n</div>\n</div>\n</body>\n</html>\n", fp);
 }
 
 int

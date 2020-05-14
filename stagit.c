@@ -343,6 +343,7 @@ writeheader(FILE *fp, const char *title)
 {
 	fputs("<!DOCTYPE html>\n"
 		"<html>\n<head>\n"
+    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
 		"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n"
 		"<title>", fp);
 	xmlencode(fp, title, strlen(title));
@@ -918,7 +919,7 @@ writefiles(FILE *fp, const git_oid *id)
 	git_commit *commit = NULL;
 	int ret = -1;
 
-	fputs("<table id=\"files\"><thead>\n<tr>"
+	fputs("<div id=\"table-scroll\"><table id=\"files\"><thead>\n<tr>"
 	      "<td><b>Mode</b></td><td><b>Name</b></td>"
 	      "<td class=\"num\" align=\"right\"><b>Size</b></td>"
 	      "</tr>\n</thead><tbody>\n", fp);
@@ -927,7 +928,7 @@ writefiles(FILE *fp, const git_oid *id)
 	    !git_commit_tree(&tree, commit))
 		ret = writefilestree(fp, tree, "");
 
-	fputs("</tbody></table>", fp);
+	fputs("</tbody></table></div>", fp);
 
 	git_commit_free(commit);
 	git_tree_free(tree);
@@ -1004,7 +1005,7 @@ writerefs(FILE *fp)
 
 			/* print header if it has an entry (first). */
 			if (++count == 1) {
-				fprintf(fp, "<h2>%s</h2><table id=\"%s\">"
+				fprintf(fp, "<h2>%s</h2><div id=\"table-scroll\"><table id=\"%s\">"
 			                "<thead>\n<tr><td><b>Name</b></td>"
 				        "<td><b>Last commit date</b></td>"
 				        "<td><b>Author</b></td>\n</tr>\n"
@@ -1035,7 +1036,7 @@ writerefs(FILE *fp)
 		}
 		/* table footer */
 		if (count)
-			fputs("</tbody></table><br/>", fp);
+			fputs("</tbody></table></div><br/>", fp);
 	}
 
 err:
@@ -1187,7 +1188,7 @@ main(int argc, char *argv[])
 	relpath = "";
 	mkdir("commit", S_IRWXU | S_IRWXG | S_IRWXO);
 	writeheader(fp, "Log");
-	fputs("<table id=\"log\"><thead>\n<tr><td><b>Date</b></td>"
+	fputs("<div id=\"table-scroll\"><table id=\"log\"><thead>\n<tr><td><b>Date</b></td>"
 	      "<td><b>Commit message</b></td>"
 	      "<td><b>Author</b></td><td class=\"num\" align=\"right\"><b>Files</b></td>"
 	      "<td class=\"num\" align=\"right\"><b>+</b></td>"
@@ -1231,7 +1232,7 @@ main(int argc, char *argv[])
 			writelog(fp, head);
 	}
 
-	fputs("</tbody></table>", fp);
+	fputs("</tbody></table></div>", fp);
 	writefooter(fp);
 	fclose(fp);
 

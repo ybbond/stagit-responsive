@@ -1,6 +1,6 @@
 body {
-	color: #000;
-	background-color: #fff;
+	color: #E3E0D7;
+	background-color: #242424;
 	font-family: monospace;
 }
 
@@ -17,8 +17,16 @@ img {
 	border: 0;
 }
 
+a {
+  color: #8DBFFF;
+}
+
+a:hover {
+  color: #F9690E;
+}
+
 a:target {
-	background-color: #ccc;
+	background-color: #303030;
 }
 
 a.d,
@@ -33,7 +41,7 @@ a.line {
 }
 
 #blob a:hover {
-	color: blue;
+	color: #F9690E;
 	text-decoration: none;
 }
 
@@ -43,6 +51,11 @@ table thead td {
 
 table td {
 	padding: 0 0.4em;
+}
+
+#blob, div#table-scroll {
+  overflow: scroll;
+  padding-bottom: 3em;
 }
 
 #content table td {
@@ -55,7 +68,7 @@ table td {
 #index tr:hover td,
 #log tr:hover td,
 #files tr:hover td {
-	background-color: #eee;
+	background-color: #303030;
 }
 
 #index tr td:nth-child(2),
@@ -84,19 +97,19 @@ pre {
 }
 
 pre a.h {
-	color: #00a;
+	color: #8DBFFF;
 }
 
 .A,
 span.i,
 pre a.i {
-	color: #070;
+	color: #79D688;
 }
 
 .D,
 span.d,
 pre a.d {
-	color: #e00;
+	color: #F9690E;
 }
 
 pre a.h:hover,
