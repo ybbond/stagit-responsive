@@ -53,7 +53,7 @@ dist:
 	rm -rf ${NAME}-${VERSION}
 	mkdir -p ${NAME}-${VERSION}
 	cp -f ${MAN1} ${HDR} ${SRC} ${COMPATSRC} ${DOC} \
-		Makefile favicon.png logo.png style.css \
+		Makefile favicon.png logo.png style.css ybbond.png \
 		example_create.sh example_post-receive.sh \
 		${NAME}-${VERSION}
 	# make tarball
@@ -82,6 +82,7 @@ install: all
 	cp -f style.css\
 		favicon.png\
 		logo.png\
+		ybbond.png\
 		example_create.sh\
 		example_post-receive.sh\
 		README\
@@ -99,6 +100,7 @@ uninstall:
 		${DESTDIR}${DOCPREFIX}/style.css\
 		${DESTDIR}${DOCPREFIX}/favicon.png\
 		${DESTDIR}${DOCPREFIX}/logo.png\
+		${DESTDIR}${DOCPREFIX}/ybbond.png\
 		${DESTDIR}${DOCPREFIX}/example_create.sh\
 		${DESTDIR}${DOCPREFIX}/example_post-receive.sh\
 		${DESTDIR}${DOCPREFIX}/README

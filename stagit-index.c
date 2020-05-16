@@ -72,7 +72,8 @@ writeheader(FILE *fp)
 	fprintf(fp, "</title>\n<link rel=\"icon\" type=\"image/png\" href=\"/favicon.png\" />\n");
 	fprintf(fp, "<link rel=\"stylesheet\" type=\"text/css\" href=\"/style.css\" />\n");
 	fputs("</head>\n<body>\n", fp);
-	fprintf(fp, "<table>\n<tr><td><img src=\"/logo.png\" alt=\"\" width=\"32\" height=\"32\" /></td>\n"
+	fprintf(fp, "<table>\n<tr><td><a href=\"https://ybbond.dev\">"
+					"<img src=\"/ybbond.png\" alt=\"\" width=\"32\" height=\"32\" /></a></td>\n"
 	        "<td><span class=\"desc\">");
 	xmlencode(fp, description, strlen(description));
 	fputs("</span></td></tr><tr><td></td><td>\n"
