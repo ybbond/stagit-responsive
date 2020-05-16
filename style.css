@@ -2,6 +2,7 @@ body {
 	color: #E3E0D7;
 	background-color: #242424;
 	font-family: monospace;
+	-webkit-text-size-adjust: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -18,11 +19,11 @@ img {
 }
 
 a {
-  color: #8DBFFF;
+	color: #8dbfff;
 }
 
 min, a:hover {
-  color: #F9690E;
+	color: #F9690E;
 }
 
 a:target {
@@ -51,9 +52,9 @@ table th {
 	text-align: left;
 }
 @media screen and (min-width: 600px) {
-  table:not(#branches) th {
-    text-align: center;
-  }
+	table:not(#branches) th {
+		text-align: center;
+	}
 }
 
 table td, table th {
@@ -61,8 +62,8 @@ table td, table th {
 }
 
 #blob, div#table-scroll, div#pre-scroll {
-  overflow: scroll;
-  padding-bottom: 3em;
+	overflow: scroll;
+	padding-bottom: 3em;
 }
 
 #content table td, #content table th {
