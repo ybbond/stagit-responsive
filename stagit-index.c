@@ -14,7 +14,6 @@ static const char *relpath = "";
 
 static char description[255] = "Repositories";
 static char *name = "";
-static char owner[255];
 
 void
 joinpath(char *buf, size_t bufsiz, const char *path, const char *path2)
@@ -79,7 +78,7 @@ writeheader(FILE *fp)
 	fputs("</span></td></tr><tr><td></td><td>\n"
 		"</td></tr>\n</table>\n<hr/>\n<div id=\"content\">\n"
 		"<div id=\"table-scroll\"><table id=\"index\"><thead>\n"
-		"<tr><th>Name</th><th>Description</th><th>Owner</th>"
+		"<tr><th>Name</th><th>Description</th>"
 		"<th>Last commit</th></tr>"
 		"</thead><tbody>\n", fp);
 }
@@ -125,8 +124,6 @@ writelog(FILE *fp)
 	xmlencode(fp, stripped_name, strlen(stripped_name));
 	fputs("</a></td><td>", fp);
 	xmlencode(fp, description, strlen(description));
-	fputs("</td><td>", fp);
-	xmlencode(fp, owner, strlen(owner));
 	fputs("</td><td>", fp);
 	if (author)
 		printtimeshort(fp, &(author->when));
@@ -197,19 +194,6 @@ main(int argc, char *argv[])
 			fclose(fp);
 		}
 
-		/* read owner or .git/owner */
-		joinpath(path, sizeof(path), repodir, "owner");
-		if (!(fp = fopen(path, "r"))) {
-			joinpath(path, sizeof(path), repodir, ".git/owner");
-			fp = fopen(path, "r");
-		}
-		owner[0] = '\0';
-		if (fp) {
-			if (!fgets(owner, sizeof(owner), fp))
-				owner[0] = '\0';
-			owner[strcspn(owner, "\n")] = '\0';
-			fclose(fp);
-		}
 		writelog(stdout);
 	}
 	writefooter(stdout);
