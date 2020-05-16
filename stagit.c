@@ -594,11 +594,11 @@ writelogline(FILE *fp, struct commitinfo *ci)
 	fputs("</td><td>", fp);
 	if (ci->author)
 		xmlencode(fp, ci->author->name, strlen(ci->author->name));
-	fputs("</td><td class=\"num\" align=\"right\">", fp);
+	fputs("</td><td class=\"num\">", fp);
 	fprintf(fp, "%zu", ci->filecount);
-	fputs("</td><td class=\"num\" align=\"right\">", fp);
+	fputs("</td><td class=\"num\">", fp);
 	fprintf(fp, "+%zu", ci->addcount);
-	fputs("</td><td class=\"num\" align=\"right\">", fp);
+	fputs("</td><td class=\"num\">", fp);
 	fprintf(fp, "-%zu", ci->delcount);
 	fputs("</td></tr>\n", fp);
 }
@@ -894,7 +894,7 @@ writefilestree(FILE *fp, git_tree *tree, const char *path)
 			xmlencode(fp, filepath, strlen(filepath));
 			fputs("\">", fp);
 			xmlencode(fp, entrypath, strlen(entrypath));
-			fputs("</a></td><td class=\"num\" align=\"right\">", fp);
+			fputs("</a></td><td class=\"num\">", fp);
 			if (lc > 0)
 				fprintf(fp, "%dL", lc);
 			else
@@ -906,7 +906,7 @@ writefilestree(FILE *fp, git_tree *tree, const char *path)
 				relpath);
 			xmlencode(fp, entrypath, strlen(entrypath));
 			git_submodule_free(module);
-			fputs("</a></td><td class=\"num\" align=\"right\"></td></tr>\n", fp);
+			fputs("</a></td><td class=\"num\"></td></tr>\n", fp);
 		}
 	}
 
@@ -922,7 +922,7 @@ writefiles(FILE *fp, const git_oid *id)
 
 	fputs("<div id=\"table-scroll\"><table id=\"files\"><thead>\n<tr>"
 	      "<th>Mode</th><th>Name</th>"
-	      "<th class=\"num\" align=\"right\">Size</th>"
+	      "<th class=\"num\">Size</th>"
 	      "</tr>\n</thead><tbody>\n", fp);
 
 	if (!git_commit_lookup(&commit, repo, id) &&
@@ -1191,9 +1191,9 @@ main(int argc, char *argv[])
 	writeheader(fp, "Log");
 	fputs("<div id=\"table-scroll\"><table id=\"log\"><thead>\n<tr><th>Date</th>"
 	      "<th>Commit message</th>"
-	      "<th>Author</th><td class=\"num\" align=\"right\"><b>Files</th>"
-	      "<td class=\"num\" align=\"right\"><b>+</th>"
-	      "<td class=\"num\" align=\"right\"><b>-</th></tr>\n</thead><tbody>\n", fp);
+	      "<th>Author</th><td class=\"num\"><b>Files</th>"
+	      "<td class=\"num\" id=\"plus\"><b>+</th>"
+	      "<td class=\"num\" id=\"min\"><b>-</th></tr>\n</thead><tbody>\n", fp);
 
 	if (cachefile && head) {
 		/* read from cache file (does not need to exist) */

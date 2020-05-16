@@ -42,14 +42,21 @@ a.line {
 
 #blob a:hover {
 	color: #F9690E;
+	background-color: #303030;
 	text-decoration: none;
 }
 
-table thead td {
+table th {
 	font-weight: bold;
+	text-align: left;
+}
+@media screen and (min-width: 600px) {
+  table:not(#branches) th {
+    text-align: center;
+  }
 }
 
-table td {
+table td, table th {
 	padding: 0 0.4em;
 }
 
@@ -58,7 +65,7 @@ table td {
   padding-bottom: 3em;
 }
 
-#content table td {
+#content table td, #content table th {
 	vertical-align: top;
 	white-space: nowrap;
 }
@@ -78,7 +85,7 @@ table td {
 	white-space: normal;
 }
 
-td.num {
+th.num, td.num {
 	text-align: right;
 }
 
