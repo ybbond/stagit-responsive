@@ -373,7 +373,7 @@ writeheader(FILE *fp, const char *title)
 		fputs("</a></td></tr>", fp);
 	}
 	fputs("<tr><td></td><td>\n", fp);
-	fprintf(fp, "<a href=\"%slog.html\">Log</a> | ", relpath);
+	fprintf(fp, "<a href=\"%sindex.html\">Log</a> | ", relpath);
 	fprintf(fp, "<a href=\"%sfiles.html\">Files</a> | ", relpath);
 	fprintf(fp, "<a href=\"%srefs.html\">Refs</a>", relpath);
 	if (submodules)
@@ -636,7 +636,7 @@ writelog(FILE *fp, const git_oid *oid)
 
 		if (!(ci = commitinfo_getbyoid(&id)))
 			break;
-		/* diffstat: for stagit HTML required for the log.html line */
+		/* diffstat: for stagit HTML required for the index.html line */
 		if (commitinfo_getstats(ci) == -1)
 			goto err;
 
@@ -1185,7 +1185,7 @@ main(int argc, char *argv[])
 	git_object_free(obj);
 
 	/* log for HEAD */
-	fp = efopen("log.html", "w");
+	fp = efopen("index.html", "w");
 	relpath = "";
 	mkdir("commit", S_IRWXU | S_IRWXG | S_IRWXO);
 	writeheader(fp, "Log");
@@ -1216,7 +1216,7 @@ main(int argc, char *argv[])
 		writelog(fp, head);
 
 		if (rcachefp) {
-			/* append previous log to log.html and the new cache */
+			/* append previous log to index.html and the new cache */
 			while (!feof(rcachefp)) {
 				n = fread(buf, 1, sizeof(buf), rcachefp);
 				if (ferror(rcachefp))
