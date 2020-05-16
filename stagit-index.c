@@ -79,8 +79,8 @@ writeheader(FILE *fp)
 	fputs("</span></td></tr><tr><td></td><td>\n"
 		"</td></tr>\n</table>\n<hr/>\n<div id=\"content\">\n"
 		"<div id=\"table-scroll\"><table id=\"index\"><thead>\n"
-		"<tr><td><b>Name</b></td><td><b>Description</b></td><td><b>Owner</b></td>"
-		"<td><b>Last commit</b></td></tr>"
+		"<tr><th>Name</th><th>Description</th><th>Owner</th>"
+		"<th>Last commit</th></tr>"
 		"</thead><tbody>\n", fp);
 }
 

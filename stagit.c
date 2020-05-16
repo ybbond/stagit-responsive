@@ -921,8 +921,8 @@ writefiles(FILE *fp, const git_oid *id)
 	int ret = -1;
 
 	fputs("<div id=\"table-scroll\"><table id=\"files\"><thead>\n<tr>"
-	      "<td><b>Mode</b></td><td><b>Name</b></td>"
-	      "<td class=\"num\" align=\"right\"><b>Size</b></td>"
+	      "<th>Mode</th><th>Name</th>"
+	      "<th class=\"num\" align=\"right\">Size</th>"
 	      "</tr>\n</thead><tbody>\n", fp);
 
 	if (!git_commit_lookup(&commit, repo, id) &&
@@ -1007,9 +1007,9 @@ writerefs(FILE *fp)
 			/* print header if it has an entry (first). */
 			if (++count == 1) {
 				fprintf(fp, "<h2>%s</h2><div id=\"table-scroll\"><table id=\"%s\">"
-			                "<thead>\n<tr><td><b>Name</b></td>"
-				        "<td><b>Last commit date</b></td>"
-				        "<td><b>Author</b></td>\n</tr>\n"
+			                "<thead>\n<tr><th>Name</th>"
+				        "<th>Last commit date</th>"
+				        "<th>Author</th>\n</tr>\n"
 				        "</thead><tbody>\n",
 				         titles[j], ids[j]);
 			}
@@ -1189,11 +1189,11 @@ main(int argc, char *argv[])
 	relpath = "";
 	mkdir("commit", S_IRWXU | S_IRWXG | S_IRWXO);
 	writeheader(fp, "Log");
-	fputs("<div id=\"table-scroll\"><table id=\"log\"><thead>\n<tr><td><b>Date</b></td>"
-	      "<td><b>Commit message</b></td>"
-	      "<td><b>Author</b></td><td class=\"num\" align=\"right\"><b>Files</b></td>"
-	      "<td class=\"num\" align=\"right\"><b>+</b></td>"
-	      "<td class=\"num\" align=\"right\"><b>-</b></td></tr>\n</thead><tbody>\n", fp);
+	fputs("<div id=\"table-scroll\"><table id=\"log\"><thead>\n<tr><th>Date</th>"
+	      "<th>Commit message</th>"
+	      "<th>Author</th><td class=\"num\" align=\"right\"><b>Files</th>"
+	      "<td class=\"num\" align=\"right\"><b>+</th>"
+	      "<td class=\"num\" align=\"right\"><b>-</th></tr>\n</thead><tbody>\n", fp);
 
 	if (cachefile && head) {
 		/* read from cache file (does not need to exist) */
