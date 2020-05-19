@@ -582,7 +582,9 @@ printshowfile(FILE *fp, struct commitinfo *ci)
 void
 writelogline(FILE *fp, struct commitinfo *ci)
 {
-	fputs("<tr><td>", fp);
+	fprintf(fp, "<tr id=\"%s\">"
+		"<td><a href=\"#%s\">#</a></td>"
+		"<td>", ci->oid, ci->oid);
 	if (ci->author)
 		printtimeshort(fp, &(ci->author->when));
 	fputs("</td><td>", fp);
@@ -1189,7 +1191,8 @@ main(int argc, char *argv[])
 	relpath = "";
 	mkdir("commit", S_IRWXU | S_IRWXG | S_IRWXO);
 	writeheader(fp, "Log");
-	fputs("<div id=\"table-scroll\"><table id=\"log\"><thead>\n<tr><th>Date</th>"
+	fputs("<div id=\"table-scroll\"><table id=\"log\"><thead>\n<tr><th>"
+				"<a href=\"#\">🔗</a></th><th>Date</th>"
 	      "<th>Commit message</th>"
 	      "<th>Author</th><td class=\"num\"><b>Files</th>"
 	      "<td class=\"num\" id=\"plus\"><b>+</th>"
