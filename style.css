@@ -1,74 +1,75 @@
 body {
-	color: #E3E0D7;
-	background-color: #242424;
-	font-family: monospace;
-	-webkit-text-size-adjust: none;
+  color: #E3E0D7;
+  background-color: #242424;
+  font-family: monospace;
+  -webkit-text-size-adjust: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-size: 1em;
-	margin: 0;
+  font-size: 1em;
+  margin: 0;
 }
 
 img, h1, h2 {
-	vertical-align: middle;
+  vertical-align: middle;
 }
 
 img {
-	border: 0;
+  border: 0;
 }
 
 a {
-	color: #8dbfff;
+  color: #8dbfff;
 }
 
 min, a:hover {
-	color: #F9690E;
+  color: #F9690E;
 }
 
 a:target, tr:target {
-	background-color: #303030;
+  outline: 0.03em solid grey;
+  background-color: #303030;
 }
 
 a.d,
 a.h,
 a.i,
 a.line {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 #blob a {
-	color: #777;
+  color: #777;
 }
 
 #blob a:hover {
-	color: #F9690E;
-	background-color: #303030;
-	text-decoration: none;
+  color: #F9690E;
+  background-color: #303030;
+  text-decoration: none;
 }
 
 table th {
-	font-weight: bold;
-	text-align: left;
+  font-weight: bold;
+  text-align: left;
 }
 @media screen and (min-width: 600px) {
-	table:not(#branches) th {
-		text-align: center;
-	}
+  table:not(#branches) th {
+    text-align: center;
+  }
 }
 
 table td, table th {
-	padding: 0 0.4em;
+  padding: 0 0.4em;
 }
 
 #blob, div#table-scroll, div#pre-scroll {
-	overflow: scroll;
-	padding-bottom: 3em;
+  overflow: scroll;
+  padding-bottom: 3em;
 }
 
 #content table td, #content table th {
-	vertical-align: top;
-	white-space: nowrap;
+  vertical-align: top;
+  white-space: nowrap;
 }
 
 #branches tr:hover td,
@@ -76,54 +77,54 @@ table td, table th {
 #index tr:hover td,
 #log tr:hover td,
 #files tr:hover td {
-	background-color: #303030;
+  background-color: #303030;
 }
 
 #index tr td:nth-child(2),
 #tags tr td:nth-child(3),
 #branches tr td:nth-child(3),
 #log tr td:nth-child(2) {
-	white-space: normal;
+  white-space: normal;
 }
 
 th.num, td.num {
-	text-align: right;
+  text-align: right;
 }
 
 .desc {
-	color: #777;
+  color: #777;
 }
 
 hr {
-	border: 0;
-	border-top: 1px solid #777;
-	height: 1px;
+  border: 0;
+  border-top: 1px solid #777;
+  height: 1px;
 }
 
 pre {
-	font-family: monospace;
+  font-family: monospace;
 }
 
 pre a.h {
-	color: #8DBFFF;
+  color: #8DBFFF;
 }
 
 .A,
 #plus,
 span.i,
 pre a.i {
-	color: #79D688;
+  color: #79D688;
 }
 
 .D,
 #min,
 span.d,
 pre a.d {
-	color: #F9690E;
+  color: #F9690E;
 }
 
 pre a.h:hover,
 pre a.i:hover,
 pre a.d:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
