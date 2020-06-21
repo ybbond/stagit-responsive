@@ -59,7 +59,9 @@ static char description[255];
 static char cloneurl[1024];
 static char *submodules;
 static char *licensefiles[] = { "HEAD:LICENSE", "HEAD:LICENSE.md", "HEAD:COPYING" };
+static char *cclicensefiles[] = { "HEAD:CC-LICENSE", "HEAD:CC-LICENSE.md" };
 static char *license;
+static char *cclicense;
 static char *readmefiles[] = { "HEAD:README", "HEAD:README.md" };
 static char *readme;
 static long long nlogcommits = -1; /* < 0 indicates not used */
@@ -385,6 +387,9 @@ writeheader(FILE *fp, const char *title)
   if (license)
     fprintf(fp, " | <a href=\"%sfile/%s.html\">LICENSE</a>",
             relpath, license);
+  if (cclicense)
+    fprintf(fp, " | <a href=\"%sfile/%s.html\">CC-LICENSE</a>",
+            relpath, cclicense);
   fputs("</td></tr></table>\n<hr/>\n<div id=\"content\">\n", fp);
 }
 
@@ -1170,6 +1175,14 @@ main(int argc, char *argv[])
     if (!git_revparse_single(&obj, repo, licensefiles[i]) &&
         git_object_type(obj) == GIT_OBJ_BLOB)
       license = licensefiles[i] + strlen("HEAD:");
+    git_object_free(obj);
+  }
+
+  /* check CC-LICENSE */
+  for (i = 0; i < sizeof(cclicensefiles) / sizeof(*cclicensefiles) && !cclicense; i++) {
+    if (!git_revparse_single(&obj, repo, cclicensefiles[i]) &&
+        git_object_type(obj) == GIT_OBJ_BLOB)
+      cclicense = cclicensefiles[i] + strlen("HEAD:");
     git_object_free(obj);
   }
 
